@@ -47,7 +47,6 @@ let minimap = {
         let percentSize = 95 / largestSide;
         this.mapContentDiv.setAttribute('style', `grid-template: repeat(${this.height}, ${percentSize}%) / repeat(${this.width}, ${percentSize}%)`);
     },
-
 }
 
 function handleInput(e) {
@@ -114,20 +113,28 @@ function uploadFile() {
         let reader = new FileReader();
         reader.onload = function(e) { 
             let result = JSON.parse(e.target.result);
-            console.log(result);
             room.setAll(result);
             room.setDefault();
             minimap.buildGrid();
             updateView();
         }
         reader.readAsText(this.files[0]);
-    }
+    } 
+}
+
+function runDemo() {
+    let demoLevel = JSON.parse(demo);
+    room.setAll(demoLevel);
+    room.setDefault();
+    minimap.buildGrid();
+    updateView();
 }
 
 
 function init() { 
     document.onkeypress = handleInput;
     document.getElementById('uploadBtn').addEventListener('click', selectFile);
+    document.getElementById('demoBtn').addEventListener('click', runDemo)
     document.getElementById('fileElement').addEventListener('change', uploadFile);
 }
 

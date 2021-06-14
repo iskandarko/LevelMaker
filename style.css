@@ -50,10 +50,11 @@ nav > div:nth-last-child(1) {
     margin-left: auto;
 }
 
-nav > div:nth-last-child(1):hover {
+#uploadBtn:hover, #demoBtn:hover {
     background-color: #494f55;
     cursor: pointer;
 }
+
 
 /* CONTENT */
 
